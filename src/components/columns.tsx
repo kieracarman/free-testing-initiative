@@ -2,14 +2,8 @@
 
 import { type ColumnDef } from "@tanstack/react-table";
 
-export type Test = {
-  id: number;
-  name: string;
-  phone: string;
-  address: string;
-  datetime: string;
-  status: "REQUESTED" | "CONFIRMED" | "COMPLETED";
-};
+import { DataTableRowActions } from "@/components";
+import { type Test } from "@/types/test-schema";
 
 export const columns: ColumnDef<Test>[] = [
   {
@@ -40,5 +34,9 @@ export const columns: ColumnDef<Test>[] = [
   {
     accessorKey: "status",
     header: "Status",
+  },
+  {
+    id: "actions",
+    cell: ({ row }) => <DataTableRowActions row={row} />,
   },
 ];
